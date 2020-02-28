@@ -180,6 +180,17 @@ android {
 }
 
 dependencies {
+
+    implementation 'com.facebook.android:facebook-android-sdk:[5,6)'
+
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-auth:19.2.0'
+    implementation 'com.google.firebase:firebase-firestore:21.4.0'
+
+    implementation project(':react-native-firebase')
+    implementation "com.google.android.gms:play-services-base:16.1.0"
+    implementation "com.google.firebase:firebase-core:16.0.9"
+
     implementation 'com.android.support:multidex:2.0.1'
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -202,3 +213,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply plugin: 'com.google.gms.google-services'
