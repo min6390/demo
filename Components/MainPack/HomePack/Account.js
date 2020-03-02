@@ -26,7 +26,7 @@ export default class Account extends React.Component {
                         firebase
                             .auth()
                             .signOut()
-                            .then(() => this.props.navigation.navigate('LoginNavigator'))
+                          //  .then(() => this.props.navigation.navigate('LoginNavigator'))
                             .catch(error => {});
                     },
                 },

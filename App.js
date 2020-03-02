@@ -17,7 +17,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import 'react-native-gesture-handler';
-import Route from './Components/Route';
+import Route from './Components/Route/Route';
 import SignIn from './Components/LoginPACK/SignIn';
 
 class App extends React.Component{

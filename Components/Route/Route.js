@@ -10,16 +10,18 @@ import {
 
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import SignIn from './LoginPACK/SignIn';
-import SignUp from './LoginPACK/SignUp';
-import ForgotPassword from './LoginPACK/ForgotPassword';
+import SignIn from '../LoginPACK/SignIn';
+import SignUp from '../LoginPACK/SignUp';
+import ForgotPassword from '../LoginPACK/ForgotPassword';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
-import Home from './MainPack/Home';
-import Loading from './LoginPACK/Loading';
-import History from './MainPack/History';
-import cNotification from './MainPack/cNotification';
-import Screen from './MainPack/Screen';
-import Account from './MainPack/HomePack/Account';
+import Home from '../MainPack/Home';
+import Loading from './Loading';
+import History from '../MainPack/History';
+import cNotification from '../MainPack/cNotification';
+import Screen from '../MainPack/Screen';
+import Account from '../MainPack/HomePack/Account';
+import ACCleaning from '../MainPack/HomePack/ACCleaning';
+import MapPicker from '../Feature/MapPicker';
 
 
 const TabNavigator = createBottomTabNavigator({
@@ -28,7 +30,7 @@ const TabNavigator = createBottomTabNavigator({
             navigationOptions: {
                 tabBarLabel: 'Home',
                 tabBarIcon: () => (
-                    <Image source={require('../images/imageBooking/home.png')}
+                    <Image source={require('../../images/imageBooking/home.png')}
                            style={styles.icon}/>
                 ),
             },
@@ -38,7 +40,7 @@ const TabNavigator = createBottomTabNavigator({
             navigationOptions: {
                 tabBarLabel: 'History',
                 tabBarIcon: () => (
-                    <Image source={require('../images/imageBooking/history.png')}
+                    <Image source={require('../../images/imageBooking/history.png')}
                            style={styles.icon}/>
                 ),
             },
@@ -48,7 +50,7 @@ const TabNavigator = createBottomTabNavigator({
             navigationOptions: {
                 tabBarLabel: 'Notification',
                 tabBarIcon: () => (
-                    <Image source={require('../images/imageBooking/writing.png')}
+                    <Image source={require('../../images/imageBooking/writing.png')}
                            style={styles.icon}/>
                 ),
             },
@@ -58,48 +60,76 @@ const TabNavigator = createBottomTabNavigator({
             navigationOptions: {
                 tabBarLabel: 'Screen',
                 tabBarIcon: () => (
-                    <Image source={require('../images/imageBooking/clock.png')}
+                    <Image source={require('../../images/imageBooking/clock.png')}
                            style={styles.icon}/>
                 ),
             },
         },
     },
 );
-
 const LoginNavigator = createStackNavigator({
         SignIn: SignIn,
         SignUp: SignUp,
         ForgotPassword: ForgotPassword,
-        Home: TabNavigator,
-        Loading: Loading,
     }, {
         defaultNavigationOptions: {
             headerShown: false,
         },
+
     },
 );
-const HomeNavigator = createStackNavigator({
-    LoginNavigator:LoginNavigator,
+
+const Navigator = createStackNavigator({
+    LoginNavigator: LoginNavigator,
     TabNavigator: TabNavigator,
-        Account: Account,
-    }, {
-        defaultNavigationOptions: {
+    Home: {
+        screen: Home,
+        navigationOptions: {
             headerShown: false,
         },
     },
-);
-const MainNavigator = createStackNavigator(
-    {
-        HomeNavigator: HomeNavigator,
-        TabNavigator: TabNavigator,
-        LoginNavigator: LoginNavigator,
-        Loading: Loading,
-    }, {
-        defaultNavigationOptions: {
+
+    cNotification: {
+        screen: cNotification,
+        navigationOptions: {
             headerShown: false,
         },
     },
-);
+
+    History: {
+        screen: History,
+        navigationOptions: {
+            headerShown: false,
+        },
+    },
+
+    ACCleaning: {
+        screen: ACCleaning,
+        navigationOptions: {
+
+        },
+    },
+
+    Account: {
+        screen: Account,
+        navigationOptions: {
+            headerShown: false,
+        },
+    },
+    MapPicker : {
+        screen: MapPicker,
+        navigationOptions: {
+
+        },
+    },
+    Loading: {
+        screen: Loading,
+        navigationOptions: {
+            headerShown: false,
+        },
+    },
+
+}, {initialRouteName: 'Loading'});
 
 const styles = StyleSheet.create({
     icon: {
@@ -109,4 +139,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default createAppContainer(MainNavigator);
+export default createAppContainer(Navigator);
