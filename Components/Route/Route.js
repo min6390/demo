@@ -80,24 +80,15 @@ const LoginNavigator = createStackNavigator({
 );
 
 const Navigator = createStackNavigator({
-    LoginNavigator: LoginNavigator,
-    TabNavigator: TabNavigator,
-    Home: {
-        screen: Home,
+    LoginNavigator: {
+        screen: LoginNavigator,
         navigationOptions: {
             headerShown: false,
         },
     },
 
-    cNotification: {
-        screen: cNotification,
-        navigationOptions: {
-            headerShown: false,
-        },
-    },
-
-    History: {
-        screen: History,
+    TabNavigator: {
+        screen: TabNavigator,
         navigationOptions: {
             headerShown: false,
         },
@@ -105,9 +96,7 @@ const Navigator = createStackNavigator({
 
     ACCleaning: {
         screen: ACCleaning,
-        navigationOptions: {
-
-        },
+        navigationOptions: {},
     },
 
     Account: {
@@ -116,11 +105,9 @@ const Navigator = createStackNavigator({
             headerShown: false,
         },
     },
-    MapPicker : {
+    MapPicker: {
         screen: MapPicker,
-        navigationOptions: {
-
-        },
+        navigationOptions: {},
     },
     Loading: {
         screen: Loading,
