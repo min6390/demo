@@ -22,6 +22,8 @@ import Screen from '../MainPack/Screen';
 import Account from '../MainPack/HomePack/Account';
 import ACCleaning from '../MainPack/HomePack/ACCleaning';
 import MapPicker from '../Feature/MapPicker';
+import Finish from '../Feature/Finish';
+import TotalSanitation from '../MainPack/HomePack/TotalSanitation';
 
 
 const TabNavigator = createBottomTabNavigator({
@@ -68,14 +70,26 @@ const TabNavigator = createBottomTabNavigator({
     },
 );
 const LoginNavigator = createStackNavigator({
-        SignIn: SignIn,
-        SignUp: SignUp,
-        ForgotPassword: ForgotPassword,
-    }, {
-        defaultNavigationOptions: {
-            headerShown: false,
+        SignIn: {
+            screen: SignIn,
+            navigationOptions: {
+                headerShown: false,
+            },
         },
 
+        SignUp: {
+            screen: SignUp,
+            navigationOptions: {
+                headerShown: false,
+            },
+        },
+
+        ForgotPassword: {
+            screen: ForgotPassword,
+            navigationOptions: {
+                headerShown: false,/**/
+            },
+        },
     },
 );
 
@@ -107,6 +121,14 @@ const Navigator = createStackNavigator({
     },
     MapPicker: {
         screen: MapPicker,
+        navigationOptions: {},
+    },
+    Finish: {
+        screen: Finish,
+        navigationOptions: {headerShown: false},
+    },
+    TotalSanitation: {
+        screen: TotalSanitation,
         navigationOptions: {},
     },
     Loading: {

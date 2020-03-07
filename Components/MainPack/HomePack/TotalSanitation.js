@@ -1,28 +1,19 @@
 import React from 'react';
 import {
-    Text,
+    Dimensions,
+    SafeAreaView,
+    StyleSheet,
+    ScrollView,
     View,
-    TextInput,
-    TouchableOpacity,
-    Image, Modal, Dimensions,
-    StyleSheet, KeyboardAvoidingView, ScrollView,
+    Text,
+    StatusBar, Image, TouchableOpacity, TextInput, Modal, KeyboardAvoidingView,
 } from 'react-native';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
 import moment from 'moment';
+import {Calendar} from 'react-native-calendars';
 
+const widthScreen = Dimensions.get('window').width;
 
-import {LocaleConfig} from 'react-native-calendars';
-import {calendarBackground} from 'react-native-calendars/src/style';
-
-LocaleConfig.locales['fr'] = {
-    monthNames: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
-    monthNamesShort: ['T1.', 'T2.', 'T3', 'T4', 'T5', 'T6', 'T7.', 'T8', 'T9', 'T10.', 'T11', 'T12'],
-    dayNames: ['Chủ Nhật', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7'],
-    dayNamesShort: ['CN.', 'Th2.', 'Th3', 'Th4', 'Th5', 'Th6', 'Th7'],
-    today: 'Aujourd\'hui',
-};
-LocaleConfig.defaultLocale = 'fr';
-export default class ACCleaning extends React.Component {
+export default class TotalSanitation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -89,6 +80,7 @@ export default class ACCleaning extends React.Component {
         );
     }
 
+
     renderCalendar() {
         const today = moment(this.state.day).format('dddd, DD-MM-YYYY');
         const {viewCalendar} = this.state;
@@ -105,7 +97,7 @@ export default class ACCleaning extends React.Component {
                               onDayPress={(day) => {
                                   this.setState({viewCalendar: true, day});
                               }}
-                            theme={{calendarBackground: '#e6e6e6'}}
+                              theme={{calendarBackground: '#e6e6e6'}}
                     />
                 </View>
         );
@@ -115,6 +107,10 @@ export default class ACCleaning extends React.Component {
         return (
             <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between'}}>
                 <ScrollView>
+                    <View style={{marginHorizontal: 10, borderBottomWidth: 1 / 2, borderColor: 'gray', padding: 5}}>
+                        <Text style={{fontSize: 16}}> Trước khi Tổng vệ sinh, Jupviec sẽ tiến hành khảo sát tại nhà
+                            bạn</Text>
+                    </View>
                     <View style={styles.container}>
                         <Image
                             source={require('../../../images/imageBooking/placeholder.png')}/>
@@ -131,10 +127,8 @@ export default class ACCleaning extends React.Component {
                             source={require('../../../images/imageBooking/home.png')}/>
                         <Text style={styles.title}> SỐ NHÀ/CĂN HỘ </Text>
                         <TouchableOpacity style={styles.buttonView}
-                                          onPress={() => {
-                                              this.setState({isModalVisible: true});
-                                          }}>
-                            <Text> {this.state.address} </Text>
+                        onPress={()=>{this.setState({isModalVisible:true})}}>
+                            <Text>{this.state.address} </Text>
                             <View>{this.renderModal()}</View>
                         </TouchableOpacity>
                     </View>
@@ -153,14 +147,6 @@ export default class ACCleaning extends React.Component {
                     </View>
                     <View style={styles.container}>
                         <Image
-                            source={require('../../../images/imageBooking/bank.png')}/>
-                        <Text style={styles.title}> BẢNG GIÁ DỊCH VỤ </Text>
-                        <TouchableOpacity style={styles.buttonView}>
-                            <Text> BẢNG GIÁ DỊCH VỤ </Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.container}>
-                        <Image
                             style={{margin: 5}}
                             source={require('../../../images/imageBooking/writing.png')}/>
                         <Text style={styles.title}> GHI CHÚ </Text>
@@ -169,29 +155,37 @@ export default class ACCleaning extends React.Component {
                     </View>
                 </ScrollView>
                 <View style={{
-                    height: '10%',
+                    height: '15%',
                     alignItems: 'center',
-                    width: windowWidth,
+                    width: widthScreen,
                     justifyContent: 'center',
                 }}>
+                    <Text style={{marginRight: 100}}>(Miễn phí nếu Đặt Tổng vệ sinh)</Text>
+                    <View style={{flexDirection: 'row-reverse', marginRight: 60}}>
+                        <Text style={{fontSize: 20, color: 'green', fontWeight: 'bold'}}>
+                            30.000đ
+                        </Text>
+                        <Text style={{fontSize: 20}}>
+                            Giá khảo sát :
+                        </Text>
+
+                    </View>
                     <TouchableOpacity style={{
-                        justifyContent: 'center', width: windowWidth - 30, height: '70%',
+                        justifyContent: 'center', width: widthScreen - 30, height: '40%',
                         backgroundColor: 'green', alignItems: 'center', borderRadius: 15,
                     }}
-                    onPress={()=>{this.props.navigation.navigate('Finish')}}>
-                        <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}> ĐĂNG KÝ </Text>
+                                      onPress={() => {
+                                          this.props.navigation.navigate('Finish');
+                                      }}>
+                        <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}> ĐẶT KHẢO SÁT </Text>
                     </TouchableOpacity>
                 </View>
             </View>
-
         );
     }
 }
 const time = moment().format();
 const timeMax = moment().add(14, 'days').calendar();
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     container: {
         flexWrap: 'wrap',

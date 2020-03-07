@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.8.1",
+    "@react-native-community/geolocation": "^2.0.2",
     "@react-native-community/masked-view": "^0.1.6",
     "moment": "^2.24.0",
     "react": "16.9.0",
@@ -22,6 +23,7 @@
     "react-native-loading-spinner-overlay": "^1.1.0",
     "react-native-maps": "^0.26.1",
     "react-native-modal": "^11.5.4",
+    "react-native-permissions": "^2.0.9",
     "react-native-reanimated": "^1.7.0",
     "react-native-safe-area-context": "^0.7.3",
     "react-native-screens": "^2.2.0",

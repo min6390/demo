@@ -3,21 +3,21 @@ import {
     SafeAreaView,
     StyleSheet,
     ScrollView,
-    View,Alert,
+    View, Alert,
     Text,
     StatusBar, TextInput, Image, KeyboardAvoidingView, TouchableOpacity,
 } from 'react-native';
-import * as firebase from "react-native-firebase";
+import * as firebase from 'react-native-firebase';
 import Spinner from 'react-native-loading-spinner-overlay';
 
 export default class SignIn extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
-            email:'',
-            password:'',
-            spinner:false,
-        }
+        this.state = {
+            email: '',
+            password: '',
+            spinner: false,
+        };
     }
 
     emailLogin = () => {
@@ -27,7 +27,7 @@ export default class SignIn extends React.Component {
             firebase
                 .auth()
                 .signInWithEmailAndPassword(email, password)
-                .then(()=>this.setState({spinner: false}))
+                .then(() => this.setState({spinner: false}))
                 .then(() => this.props.navigation.navigate('Home'))
                 .catch(error =>
                     this.setState({errorMessage: error.message},
@@ -42,66 +42,71 @@ export default class SignIn extends React.Component {
 
     render() {
         return (
-            <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
+            <View style={styles.container}>
                 <View style={styles.imageView}>
                     <Image
                         source={require('../../images/removebg-preview.png')}/>
-                        <Spinner
+                    <Spinner
                         visible={this.state.spinner}/>
+
                 </View>
-                <Text style={{fontSize: 25, textAlign: 'center', fontWeight: 'bold', marginVertical: 10}}>LOGIN</Text>
-                <TextInput
-                    style={styles.textInput}
-                    placeholder={'Enter your Email'}
-                    keyboardType={'email-address'}
-                    returnKeyType={'next'}
-                    onSubmitEditing={() => {
-                        this.refs.txtPassword.focus();
-                    }}
-                    onChangeText={email => {
-                        this.setState({email});
-                    }}
-                    value={this.state.email}/>
-                <TextInput
-                    maxLength={15}
-                    style={styles.textInput}
-                    placeholder={'Enter your Password'}
-                    secureTextEntry
-                    ref={'txtPassword'}
-                    onChangeText={password => {
-                        this.setState({password});
-                    }}
-                    value={this.state.password}/>
-                <View style={{marginTop: 10}}>
-                    <TouchableOpacity style={styles.buttonView}
-                    onPress={this.emailLogin}>
-                        <Text style={{fontSize: 18, textAlign: 'center'}}>Sign in</Text>
-                    </TouchableOpacity>
-                    <Text style={{fontSize: 20, textAlign: 'center', fontWeight: 'bold'}}>OR</Text>
-                    <TouchableOpacity style={styles.buttonView}>
-                        <Text style={{fontSize: 18, textAlign: 'center'}}>Facebook</Text>
-                    </TouchableOpacity>
+                <Text style={{fontSize: 25, textAlign: 'center', fontWeight: 'bold', marginBottom: 20}}>LOGIN</Text>
+                <View style={{flex: 6}}>
+                    <TextInput
+                        style={styles.textInput}
+                        placeholder={'Enter your Email'}
+                        keyboardType={'email-address'}
+                        returnKeyType={'next'}
+                        onSubmitEditing={() => {
+                            this.refs.txtPassword.focus();
+                        }}
+                        onChangeText={email => {
+                            this.setState({email});
+                        }}
+                        value={this.state.email}/>
+                    <TextInput
+                        maxLength={15}
+                        style={styles.textInput}
+                        placeholder={'Enter your Password'}
+                        secureTextEntry
+                        ref={'txtPassword'}
+                        onChangeText={password => {
+                            this.setState({password});
+                        }}
+                        value={this.state.password}/>
+                    <View style={{flex: 1}}>
+                        <TouchableOpacity style={styles.buttonView}
+                                          onPress={this.emailLogin}>
+                            <Text style={{fontSize: 18, textAlign: 'center'}}>Sign in</Text>
+                        </TouchableOpacity>
+                        <Text style={{fontSize: 20, textAlign: 'center', fontWeight: 'bold'}}>OR</Text>
+                        <TouchableOpacity style={styles.buttonView}>
+                            <Text style={{fontSize: 18, textAlign: 'center'}}>Facebook</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.viewButtonRow}>
+                        <TouchableOpacity
+                            onPress={() => this.props.navigation.navigate('SignUp')}>
+                            <Text style={{fontSize: 15, textAlign: 'center', color: '#708090'}}>Sign up</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => this.props.navigation.navigate('ForgotPassword')}>
+                            <Text style={{fontSize: 15, textAlign: 'center', color: '#708090'}}>Forgot your password
+                                ?</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <View style={styles.viewButtonRow}>
-                    <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('SignUp')}>
-                        <Text style={{fontSize: 15, textAlign: 'center', color: '#708090'}}>Sign up</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => this.props.navigation.navigate('ForgotPassword')}>
-                        <Text style={{fontSize: 15, textAlign: 'center', color: '#708090'}}>Forgot your password
-                            ?</Text>
-                    </TouchableOpacity>
-                </View>
-            </KeyboardAvoidingView>
+            </View>
         );
     }
 }
 const styles = StyleSheet.create({
+
     container: {
         flex: 10,
     },
     imageView: {
+        flex: 4,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -126,6 +131,7 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
     },
     viewButtonRow: {
+        flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginHorizontal: 25,

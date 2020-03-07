@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    Dimensions,
     SafeAreaView,
     StyleSheet,
     ScrollView,
@@ -7,6 +8,8 @@ import {
     Text,
     StatusBar, Image, TouchableOpacity,
 } from 'react-native';
+
+const widthScreen = Dimensions.get('window').width;
 
 export default class Home extends React.Component {
     render() {
@@ -29,7 +32,7 @@ export default class Home extends React.Component {
                 <ScrollView>
                     <View style={styles.viewScrollView}>
                         <TouchableOpacity style={styles.buttonViewLeft}
-                        onPress={()=>this.props.navigation.navigate('ACCleaning')}>
+                                          onPress={() => this.props.navigation.navigate('ACCleaning')}>
                             <Image
                                 style={styles.imageViewButton}
                                 source={require('../../images/imagesHome/washing-machine.png')}/>
@@ -45,7 +48,7 @@ export default class Home extends React.Component {
                                 </Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonViewRight}>
+                        <TouchableOpacity style={styles.buttonViewLeft}>
                             <Image
                                 style={styles.imageViewButton}
                                 source={require('../../images/imagesHome/bug-spray.png')}/>
@@ -53,20 +56,23 @@ export default class Home extends React.Component {
                                 fwasfwafawfw
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonViewLeft}>
+                        <TouchableOpacity style={styles.buttonViewLeft}
+                                          onPress={() => {
+                                              this.props.navigation.navigate('TotalSanitation');
+                                          }}>
                             <Image
                                 style={styles.imageViewButton}
                                 source={require('../../images/imagesHome/vacuum-cleaner.png')}/>
                             <Text>
-                                fwasfwafawfw
+                                Tổng vệ sinh
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonViewRight}>
+                        <TouchableOpacity style={styles.buttonViewLeft}>
                             <Image
                                 style={styles.imageViewButton}
                                 source={require('../../images/imagesHome/broom.png')}/>
                             <Text>
-                                fwasfwafawfw
+                                Dùng lẻ
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonViewLeft}>
@@ -77,7 +83,7 @@ export default class Home extends React.Component {
                                 fwasfwafawfw
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonViewRight}>
+                        <TouchableOpacity style={styles.buttonViewLeft}>
                             <Image
                                 style={styles.imageViewButton}
                                 source={require('../../images/imagesHome/couch.png')}/>
@@ -154,32 +160,13 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
     },
     buttonViewLeft: {
-        width: 150,
-        height: 150,
+        width: (widthScreen - 80) / 2,
+        height: (widthScreen - 80) / 2,
         backgroundColor: '#8fbc8f',
+        marginHorizontal: 10,
+        marginVertical: 5,
         borderRadius: 20,
         alignItems: 'center',
-        margin: 10,
-        borderWidth: 1,
-        borderColor: '#8fbc8f',
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 5,
-        },
-        shadowOpacity: 0.36,
-        shadowRadius: 6.68,
-
-        elevation: 11,
-    },
-    buttonViewRight: {
-        width: 150,
-        height: 150,
-        backgroundColor: '#8fbc8f',
-        borderRadius: 20,
-        alignItems: 'center',
-        marginLeft: 20,
-        margin: 10,
         borderWidth: 1,
         borderColor: '#8fbc8f',
         shadowColor: '#000',
