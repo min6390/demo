@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
         elevation: 11,
     },
     imageViewButton: {
-        justifyContent:'center',
+        justifyContent: 'center',
         alignItems: 'center',
         height: 50,
         width: 50,

@@ -8,6 +8,7 @@ import {
 import ProgressBar from '../../Feature/ProgressBar';
 import RenderModal from '../../Feature/RenderModal';
 import RenderCalendar from '../../Feature/RenderCalendar';
+import WorkTime from '../../Feature/WorkTime';
 
 export default class Retail extends React.Component {
     constructor() {
@@ -74,9 +75,9 @@ export default class Retail extends React.Component {
                         <Image
                             source={require('../../../images/imageBooking/clock.png')}/>
                         <Text style={styles.title}> GIỜ LÀM VIỆC</Text>
-                        <TouchableOpacity style={styles.buttonView}>
-                            <Text> BẢNG GIÁ DỊCH VỤ </Text>
-                        </TouchableOpacity>
+                        <View style={styles.buttonView}>
+                            <View><WorkTime/></View>
+                        </View>
                     </View>
                     <View style={styles.container}>
                         <Image
@@ -86,7 +87,6 @@ export default class Retail extends React.Component {
                                           onPress={() => {
                                           }}>
                             <Text></Text>
-                            <View></View>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.container}>

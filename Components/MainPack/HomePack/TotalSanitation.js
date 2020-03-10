@@ -138,12 +138,12 @@ export default class TotalSanitation extends React.Component {
                                 source={require('../../../images/imageBooking/calendar.png')}/>
                             <Text style={styles.title}> LỊCH LÀM VIỆC </Text>
                         </View>
-                        <TouchableOpacity style={styles.buttonViewCalendar}
+                        <View style={styles.buttonViewCalendar}
                                           onPress={() => {
                                               this.setState({viewCalendar: false});
                                           }}>
                             <View>{this.renderCalendar()}</View>
-                        </TouchableOpacity>
+                        </View>
                     </View>
                     <View style={styles.container}>
                         <Image
