@@ -33,9 +33,10 @@ export default class Home extends React.Component {
                     <View style={styles.viewScrollView}>
                         <TouchableOpacity style={styles.buttonViewLeft}
                                           onPress={() => this.props.navigation.navigate('ACCleaning')}>
-                            <Image
-                                style={styles.imageViewButton}
-                                source={require('../../images/imagesHome/washing-machine.png')}/>
+                            <View style={styles.imageViewButton}>
+                                <Image
+                                    source={require('../../images/imagesHome/washing-machine.png')}/>
+                            </View>
                             <Text>
                                 ACCleaning
                             </Text>
@@ -49,9 +50,10 @@ export default class Home extends React.Component {
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonViewLeft}>
-                            <Image
-                                style={styles.imageViewButton}
-                                source={require('../../images/imagesHome/bug-spray.png')}/>
+                            <View style={styles.imageViewButton}>
+                                <Image
+                                    source={require('../../images/imagesHome/bug-spray.png')}/>
+                            </View>
                             <Text>
                                 fwasfwafawfw
                             </Text>
@@ -60,33 +62,40 @@ export default class Home extends React.Component {
                                           onPress={() => {
                                               this.props.navigation.navigate('TotalSanitation');
                                           }}>
-                            <Image
-                                style={styles.imageViewButton}
-                                source={require('../../images/imagesHome/vacuum-cleaner.png')}/>
+                            <View style={styles.imageViewButton}>
+                                <Image
+                                    source={require('../../images/imagesHome/vacuum-cleaner.png')}/>
+                            </View>
                             <Text>
                                 Tổng vệ sinh
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonViewLeft}>
-                            <Image
-                                style={styles.imageViewButton}
-                                source={require('../../images/imagesHome/broom.png')}/>
+                        <TouchableOpacity style={styles.buttonViewLeft}
+                                          onPress={() => {
+                                              this.props.navigation.navigate('Retail');
+                                          }}>
+                            <View style={styles.imageViewButton}>
+                                <Image
+                                    source={require('../../images/imagesHome/broom.png')}/>
+                            </View>
                             <Text>
                                 Dùng lẻ
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonViewLeft}>
-                            <Image
-                                style={styles.imageViewButton}
-                                source={require('../../images/imagesHome/schedule.png')}/>
+                            <View style={styles.imageViewButton}>
+                                <Image
+                                    source={require('../../images/imagesHome/schedule.png')}/>
+                            </View>
                             <Text>
                                 fwasfwafawfw
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonViewLeft}>
-                            <Image
-                                style={styles.imageViewButton}
-                                source={require('../../images/imagesHome/couch.png')}/>
+                            <View style={styles.imageViewButton}>
+                                <Image
+                                    source={require('../../images/imagesHome/couch.png')}/>
+                            </View>
                             <Text>
                                 fwasfw
                             </Text>
@@ -162,7 +171,7 @@ const styles = StyleSheet.create({
     buttonViewLeft: {
         width: (widthScreen - 80) / 2,
         height: (widthScreen - 80) / 2,
-        backgroundColor: '#8fbc8f',
+        backgroundColor: '#FFF',
         marginHorizontal: 10,
         marginVertical: 5,
         borderRadius: 20,
@@ -180,6 +189,8 @@ const styles = StyleSheet.create({
         elevation: 11,
     },
     imageViewButton: {
+        justifyContent:'center',
+        alignItems: 'center',
         height: 50,
         width: 50,
         borderColor: '#6495ed',

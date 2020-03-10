@@ -24,6 +24,7 @@ import ACCleaning from '../MainPack/HomePack/ACCleaning';
 import MapPicker from '../Feature/MapPicker';
 import Finish from '../Feature/Finish';
 import TotalSanitation from '../MainPack/HomePack/TotalSanitation';
+import Retail from '../MainPack/HomePack/Retail';
 
 
 const TabNavigator = createBottomTabNavigator({
@@ -130,6 +131,9 @@ const Navigator = createStackNavigator({
     TotalSanitation: {
         screen: TotalSanitation,
         navigationOptions: {},
+    },
+    Retail: {
+        screen: Retail,
     },
     Loading: {
         screen: Loading,
