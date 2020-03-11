@@ -50,11 +50,9 @@ export default class RenderCalendar extends React.Component {
                               minDate={time}
                               maxDate={timeMax}
                               onDayPress={(day) => {
-                                  console.log('CCC',day)
                                   this.setState({viewCalendar: true, day, selectedTimestamp: day.timestamp / 1000});
                               }}
                               theme={{calendarBackground: '#e6e6e6'}}
-
                     />
                 </View>
         );

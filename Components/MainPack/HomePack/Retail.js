@@ -8,7 +8,7 @@ import {
 import ProgressBar from '../../Feature/ProgressBar';
 import RenderModal from '../../Feature/RenderModal';
 import RenderCalendar from '../../Feature/RenderCalendar';
-import WorkTime from '../../Feature/WorkTime';
+import WheelPicker from '../../Feature/WheelPicker';
 
 export default class Retail extends React.Component {
     constructor() {
@@ -17,9 +17,9 @@ export default class Retail extends React.Component {
             isModalVisible: false,
             address: '',
             isCalendarVisible: false,
+            isModalVisiblePicker: false,
         };
     };
-
     callback = (address) => {
         this.setState({address});
     };
@@ -52,8 +52,6 @@ export default class Retail extends React.Component {
                                               }
                                           }}>
                             <Text>{this.state.address}</Text>
-                            <View><RenderModal ref={ref => this.renderModal = ref}
-                                               callback={this.callback}/></View>
                         </TouchableOpacity>
                     </View>
                     <View>
@@ -75,8 +73,10 @@ export default class Retail extends React.Component {
                         <Image
                             source={require('../../../images/imageBooking/clock.png')}/>
                         <Text style={styles.title}> GIỜ LÀM VIỆC</Text>
-                        <View style={styles.buttonView}>
-                            <View><WorkTime/></View>
+                        <View style={styles.viewWordTime}>
+                            <View style={{ margin: 5}}>
+                                <WheelPicker/>
+                            </View>
                         </View>
                     </View>
                     <View style={styles.container}>
@@ -114,6 +114,7 @@ export default class Retail extends React.Component {
                         <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}> ĐĂNG KÝ </Text>
                     </TouchableOpacity>
                 </View>
+                <RenderModal ref={ref => this.renderModal = ref} callback={this.callback}/>
             </View>
 
 
@@ -181,5 +182,15 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         justifyContent: 'center',
         marginHorizontal: 10,
+    },
+    viewWordTime: {
+        margin: 5,
+        width: '96%',
+        borderWidth: 1 / 2,
+        backgroundColor: '#e6e6e6',
+        borderColor: 'gray',
+        borderRadius: 10,
+        paddingHorizontal: 10,
+        justifyContent: 'center',
     },
 });
