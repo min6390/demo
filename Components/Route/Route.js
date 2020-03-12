@@ -25,6 +25,7 @@ import MapPicker from '../Feature/MapPicker';
 import Finish from '../Feature/Finish';
 import TotalSanitation from '../MainPack/HomePack/TotalSanitation';
 import Retail from '../MainPack/HomePack/Retail';
+import ServiceConfirmation from '../confirm/ServiceConfirmation';
 
 
 const TabNavigator = createBottomTabNavigator({
@@ -118,6 +119,15 @@ const Navigator = createStackNavigator({
         screen: Account,
         navigationOptions: {
             headerShown: false,
+        },
+    },
+    ServiceConfirmation: {
+        screen: ServiceConfirmation,
+        navigationOptions: {
+            title:'Xác nhận dịch vụ' ,
+            headerTitleStyle:{
+                fontWeight:'bold',
+            }
         },
     },
     MapPicker: {

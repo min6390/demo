@@ -1,16 +1,10 @@
 import React from 'react';
 import {
-    Text,
-    View,
-    TextInput,
-    TouchableOpacity,
-    Image, Modal, Dimensions,
-    StyleSheet, KeyboardAvoidingView, ScrollView,
+    Text, View,
 } from 'react-native';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {Calendar} from 'react-native-calendars';
 import moment from 'moment';
 import {LocaleConfig} from 'react-native-calendars';
-import {lessOrEq} from 'react-native-reanimated';
 
 
 LocaleConfig.locales['fr'] = {
@@ -27,21 +21,23 @@ export default class RenderCalendar extends React.Component {
         this.state = {
             isCalendarVisible: false,
             viewCalendar: true,
-            dayGet: '',
-            dateSelected: '',
         };
     }
 
     open() {
         this.setState({viewCalendar: false});
     }
-
+    onDayPress(){
+        if(this.props.onDayPress){
+         this.props.onDayPress(this.state.selectedTimestamp)
+        }
+    }
     render() {
         let today = moment.unix(this.state.selectedTimestamp).format('dddd, D MMMM [năm] YYYY');
-        const {viewCalendar} = this.state;
+        let {viewCalendar} = this.state;
         return (viewCalendar ?
                 <View style={{marginHorizontal: 5, height: 50, justifyContent: 'center'}}>
-                    <Text style={{fontSize: 16}}>{today} </Text>
+                    <Text style={{fontSize: 16}}>{today}</Text>
                 </View>
                 : <View>
                     <Calendar style={{backgroundColor: '#e6e6e6'}}
@@ -50,15 +46,17 @@ export default class RenderCalendar extends React.Component {
                               minDate={time}
                               maxDate={timeMax}
                               onDayPress={(day) => {
-                                  this.setState({viewCalendar: true, day, selectedTimestamp: day.timestamp / 1000});
+                                  this.setState({viewCalendar: true, day, selectedTimestamp: day.timestamp / 1000},()=>{
+                                      this.onDayPress();
+                                  });
+                                  console.log('AA',day)
                               }}
                               theme={{calendarBackground: '#e6e6e6'}}
                     />
+
                 </View>
         );
     }
 }
-
 const time = moment().format();
-
 const timeMax = moment().add(14, 'days').calendar();

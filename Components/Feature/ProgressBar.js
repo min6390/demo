@@ -7,44 +7,26 @@ import {
 } from 'react-native';
 import * as firebase from 'react-native-firebase';
 
-export default class ProgressBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state={
-            number :0
-        }
-    }
-
-    render() {
-        const ProgramBar = (props) => {
-            const process = props.process;
-            return (
-                <View {...props}>
-                    <View style={process >-1 ? styles.imageView:styles.imageViewFinal}>
-                        <Image
-                            source={require('../../images/thanhtientrinh/sort.png')}/>
-                    </View>
-                    <View style={process >0 ? styles.line:styles.lineFinal}/>
-                    <View style={process >-0 ? styles.imageView:styles.imageViewFinal}>
-                        <Image
-                            source={require('../../images/thanhtientrinh/tick.png')}/>
-                    </View>
-                    <View style={process >1 ? styles.line:styles.lineFinal}/>
-                    <View style={process >1 ? styles.imageView:styles.imageViewFinal}>
-                        <Image
-                            source={require('../../images/thanhtientrinh/dollar.png')}/>
-                    </View>
-                </View>
-
-            );
-        };
-        return (
-            <View style={{alignItems: 'center', flex: 1,margin:5}}>
-                <ProgramBar style={styles.ProgramBar} process={this.state.number}></ProgramBar>
+export default ({process}) => {
+    return (
+        <View style={{flexDirection: 'row', alignItems: 'center', paddingVertical: 10, paddingHorizontal: 15}}>
+            <View style={process >-1 ? styles.imageView:styles.imageViewFinal}>
+                <Image
+                    source={require('../../images/thanhtientrinh/sort.png')}/>
             </View>
+            <View style={process >0 ? styles.line:styles.lineFinal}/>
+            <View style={process >-0 ? styles.imageView:styles.imageViewFinal}>
+                <Image
+                    source={require('../../images/thanhtientrinh/tick.png')}/>
+            </View>
+            <View style={process >1 ? styles.line:styles.lineFinal}/>
+            <View style={process >1 ? styles.imageView:styles.imageViewFinal}>
+                <Image
+                    source={require('../../images/thanhtientrinh/dollar.png')}/>
+            </View>
+        </View>
 
-        );
-    }
+    );
 }
 const styles = StyleSheet.create({
     line: {

@@ -110,6 +110,9 @@ export default class MapPicker extends Component {
                         });
                     }}>
                 </MapView>
+                <Text>
+                    {this.state.latitude } - {this.state.longitude}
+                </Text>
             </View>
         );
     }

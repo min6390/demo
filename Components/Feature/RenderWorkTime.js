@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {
-    Platform,
     StyleSheet,
     Text,
     View, Modal, TouchableOpacity, Image, Dimensions,
@@ -11,7 +10,7 @@ import Picker from '@gregfrench/react-native-wheel-picker';
 
 const PickerItem = Picker.Item;
 
-export default class WheelPicker extends Component {
+export default class RenderWorkTime extends Component {
 
     constructor(props) {
         super(props);
@@ -22,6 +21,7 @@ export default class WheelPicker extends Component {
             firstTime: ['08:00', '08:30', '09:00', '09:30', '10:00'],
             lastTime: ['10:00', '10:30', '11:00', '11:30', '12:00'],
             isModalVisiblePicker: false,
+            money: '',
         };
     }
 
@@ -56,6 +56,12 @@ export default class WheelPicker extends Component {
             if (rightPicker < leftPicker) {
                 this.setState({rightPicker: leftPicker});
             }
+        }
+    };
+    retailMoney = () => {
+        let {leftPicker, rightPicker} = this.state;
+        if (rightPicker > leftPicker) {
+            this.setState({money: 'hahaha'});
         }
     };
 
@@ -114,6 +120,7 @@ export default class WheelPicker extends Component {
                     </Text>
                 </View>
                 <Modal
+                    animationType={'fade'}
                     transparent={true}
                     visible={this.state.isModalVisiblePicker}>
                     <View style={{
@@ -123,7 +130,6 @@ export default class WheelPicker extends Component {
                         backgroundColor: 'gray',
                         opacity: 0.9,
                     }}>
-
                         <View style={styles.container}>
                             <View style={{flexDirection: 'row'}}>
                                 <View style={{justifyContent: 'center'}}>
@@ -160,8 +166,8 @@ export default class WheelPicker extends Component {
                             </View>
                             <TouchableOpacity style={styles.btnFinish}
                                               onPress={() => {
-                                                  this.setState({isModalVisiblePicker: false});
-
+                                                  this.setState({isModalVisiblePicker: false}, this.retailMoney);
+                                                  console.log('AAA', this.retailMoney);
                                               }}>
                                 <Text style={{fontSize: 18, color: 'white', fontWeight: 'bold'}}>Xác nhận</Text>
                             </TouchableOpacity>
@@ -237,7 +243,7 @@ const styles = StyleSheet.create({
         width: 60,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'green',
+        backgroundColor: '#34ab11',
     },
     baseContainer: {
         height: 35,

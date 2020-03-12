@@ -8,7 +8,8 @@ import {
 import ProgressBar from '../../Feature/ProgressBar';
 import RenderModal from '../../Feature/RenderModal';
 import RenderCalendar from '../../Feature/RenderCalendar';
-import WheelPicker from '../../Feature/WheelPicker';
+import RenderWorkTime from '../../Feature/RenderWorkTime';
+import RetailMoney from '../../Feature/RetailMoney';
 
 export default class Retail extends React.Component {
     constructor() {
@@ -18,23 +19,30 @@ export default class Retail extends React.Component {
             address: '',
             isCalendarVisible: false,
             isModalVisiblePicker: false,
+            number: 0,
+
         };
     };
+
     callback = (address) => {
         this.setState({address});
     };
-
+    onDayPress = (selectedTimestamp)=>{
+       this.selectedTimestamp = selectedTimestamp;
+    };
     render() {
         return (
             <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between'}}>
                 <ScrollView>
-                    <ProgressBar/>
+                    <ProgressBar process={0}/>
+
                     <View style={styles.container}>
                         <Image
                             source={require('../../../images/imageBooking/placeholder.png')}/>
                         <Text style={styles.title}> ĐỊA ĐIỂM LÀM VIỆC </Text>
                         <TouchableOpacity style={styles.buttonView}
                                           onPress={() => {
+                                           this.props.navigation.navigate('MapPicker')
                                           }}>
                             <Text> ĐỊA ĐIỂM LÀM VIỆC </Text>
                         </TouchableOpacity>
@@ -54,6 +62,7 @@ export default class Retail extends React.Component {
                             <Text>{this.state.address}</Text>
                         </TouchableOpacity>
                     </View>
+
                     <View>
                         <View style={styles.container}>
                             <Image
@@ -66,19 +75,21 @@ export default class Retail extends React.Component {
                                                   this.renderCalendar.open();
                                               }
                                           }}>
-                            <View><RenderCalendar ref={ref => this.renderCalendar = ref}/></View>
+                            <View><RenderCalendar ref={ref => this.renderCalendar = ref} onDayPress={this.onDayPress}/></View>
                         </TouchableOpacity>
                     </View>
+
                     <View style={styles.container}>
                         <Image
                             source={require('../../../images/imageBooking/clock.png')}/>
                         <Text style={styles.title}> GIỜ LÀM VIỆC</Text>
                         <View style={styles.viewWordTime}>
-                            <View style={{ margin: 5}}>
-                                <WheelPicker/>
+                            <View style={{margin: 5}}>
+                                <RenderWorkTime/>
                             </View>
                         </View>
                     </View>
+
                     <View style={styles.container}>
                         <Image
                             source={require('../../../images/imageBooking/voucher.png')}/>
@@ -89,6 +100,7 @@ export default class Retail extends React.Component {
                             <Text></Text>
                         </TouchableOpacity>
                     </View>
+
                     <View style={styles.container}>
                         <Image
                             style={{margin: 5}}
@@ -98,26 +110,26 @@ export default class Retail extends React.Component {
                                    placeholder={'Nhập vào cái gì đó'}/>
                     </View>
                 </ScrollView>
+
                 <View style={{
-                    height: '10%',
-                    alignItems: 'center',
                     width: windowWidth,
-                    justifyContent: 'center',
                 }}>
-                    <TouchableOpacity style={{
-                        justifyContent: 'center', width: windowWidth - 30, height: '70%',
-                        backgroundColor: 'green', alignItems: 'center', borderRadius: 15,
-                    }}
-                                      onPress={() => {
-                                          this.props.navigation.navigate('Finish');
-                                      }}>
-                        <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}> ĐĂNG KÝ </Text>
-                    </TouchableOpacity>
+                    <RetailMoney money={this.state.money}/>
+                    <View style={{alignItems: 'center', justifyContent: 'center'}}>
+                        <TouchableOpacity style={{
+                            justifyContent: 'center', width: windowWidth - 30, height: windowWidth / 8,
+                            backgroundColor: 'green', alignItems: 'center', borderRadius: 15, marginBottom: 15,
+                        }}
+                                          onPress={() => {
+                                              this.props.navigation.navigate('ServiceConfirmation',{data: this.selectedTimestamp})
+                                              console.log('AAA',this.selectedTimestamp)
+                                          }}>
+                            <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}> TIẾP TỤC </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
                 <RenderModal ref={ref => this.renderModal = ref} callback={this.callback}/>
             </View>
-
-
         );
     }
 }
