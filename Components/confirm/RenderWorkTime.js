@@ -65,6 +65,16 @@ export default class RenderWorkTime extends Component {
         }
     };
 
+    onPressWorkTime() {
+        if (this.props.onPressWorkTime) {
+            this.props.onPressWorkTime(
+                this.state.firstTime,
+                this.state.leftPicker,
+                this.state.lastTime,
+                this.state.rightPicker);
+        }
+    };
+
     renderWorkTime() {
         const ProgramBar = (props) => {
             let process = props.process;
@@ -166,8 +176,8 @@ export default class RenderWorkTime extends Component {
                             </View>
                             <TouchableOpacity style={styles.btnFinish}
                                               onPress={() => {
-                                                  this.setState({isModalVisiblePicker: false}, this.retailMoney);
-                                                  console.log('AAA', this.retailMoney);
+                                                  this.setState({isModalVisiblePicker: false}, this.onPressWorkTime);
+
                                               }}>
                                 <Text style={{fontSize: 18, color: 'white', fontWeight: 'bold'}}>Xác nhận</Text>
                             </TouchableOpacity>

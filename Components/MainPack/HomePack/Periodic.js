@@ -1,43 +1,25 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
-    StyleSheet,
     View,
-    Text, Alert,
-    Image, TouchableOpacity, ScrollView, TextInput, Dimensions,
+    Image,
+    Dimensions, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput,
 } from 'react-native';
 import ProgressBar from '../../Feature/ProgressBar';
 import RenderModal from '../../Feature/RenderModal';
-import RenderCalendar from '../../Feature/RenderCalendar';
-import RenderWorkTime from '../../confirm/RenderWorkTime';
-import MoneyPay from '../../Feature/MoneyPay';
 
-export default class Retail extends React.Component {
-    constructor() {
-        super();
+export default class Periodic extends Component {
+    constructor(props) {
+        super(props);
         this.state = {
-            isModalVisible: false,
             address: '',
-            isCalendarVisible: false,
-            isModalVisiblePicker: false,
-            number: 0,
 
         };
-    };
+    }
 
     onPressModal = (address) => {
         this.setState({address});
     };
 
-    onPressDay = (selectedTimestamp) => {
-        this.selectedTimestamp = selectedTimestamp;
-    };
-
-    onPressWorkTime = (firstTime, leftPicker, lastTime, rightPicker) => {
-        this.firstTime = firstTime;
-        this.leftPicker = leftPicker;
-        this.lastTime = lastTime;
-        this.rightPicker = rightPicker;
-    };
 
     render() {
         return (
@@ -76,25 +58,21 @@ export default class Retail extends React.Component {
                         <View style={styles.container}>
                             <Image
                                 source={require('../../../images/imageBooking/calendar.png')}/>
-                            <Text style={styles.title}> LỊCH LÀM VIỆC </Text>
+                            <Text style={styles.title}> LỊCH LÀM VIỆC HẰNG TUẦN</Text>
                         </View>
                         <TouchableOpacity style={styles.buttonViewCalendar}
                                           onPress={() => {
-                                              if (this.renderCalendar) {
-                                                  this.renderCalendar.open();
-                                              }
                                           }}>
-                            <View><RenderCalendar ref={ref => this.renderCalendar = ref} onPressDay={this.onPressDay}/></View>
+                            <View></View>
                         </TouchableOpacity>
                     </View>
 
                     <View style={styles.container}>
                         <Image
                             source={require('../../../images/imageBooking/clock.png')}/>
-                        <Text style={styles.title}> GIỜ LÀM VIỆC</Text>
+                        <Text style={styles.title}> THỜI GIAN LÀM VIỆC</Text>
                         <View style={styles.viewWordTime}>
                             <View style={{margin: 5}}>
-                                <RenderWorkTime onPressWorkTime={this.onPressWorkTime}/>
                             </View>
                         </View>
                     </View>
@@ -129,12 +107,7 @@ export default class Retail extends React.Component {
                             backgroundColor: 'green', alignItems: 'center', borderRadius: 15, marginBottom: 15,
                         }}
                                           onPress={() => {
-                                              this.props.navigation.navigate('ServiceConfirmation',
-                                                  {
-                                                      data: this.selectedTimestamp,
-                                                      dataFirstTime: this.firstTime[this.leftPicker],
-                                                      dataLastTime: this.lastTime[this.rightPicker],
-                                                  });
+
                                           }}>
                             <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}> TIẾP TỤC </Text>
                         </TouchableOpacity>
@@ -218,3 +191,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
 });
+
+
+

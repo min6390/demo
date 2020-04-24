@@ -26,6 +26,8 @@ import Finish from '../Feature/Finish';
 import TotalSanitation from '../MainPack/HomePack/TotalSanitation';
 import Retail from '../MainPack/HomePack/Retail';
 import ServiceConfirmation from '../confirm/ServiceConfirmation';
+import MoneyPay from '../Feature/MoneyPay';
+import Periodic from '../MainPack/HomePack/Periodic';
 
 
 const TabNavigator = createBottomTabNavigator({
@@ -124,10 +126,10 @@ const Navigator = createStackNavigator({
     ServiceConfirmation: {
         screen: ServiceConfirmation,
         navigationOptions: {
-            title:'Xác nhận dịch vụ' ,
-            headerTitleStyle:{
-                fontWeight:'bold',
-            }
+            title: 'Xác nhận dịch vụ',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
         },
     },
     MapPicker: {
@@ -144,6 +146,18 @@ const Navigator = createStackNavigator({
     },
     Retail: {
         screen: Retail,
+    },
+    MoneyPay: {
+        screen: MoneyPay,
+    },
+    Periodic: {
+        screen: Periodic,
+        navigationOptions: {
+            title: 'Định kỳ',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
+        },
     },
     Loading: {
         screen: Loading,

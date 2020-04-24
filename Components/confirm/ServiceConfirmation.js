@@ -11,16 +11,23 @@ export default class ServiceConfirmation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataCalendar: '',
-
+            data: '',
+            dataFirstTime: '',
+            dataLastTime: '',
         };
     };
 
     componentDidMount() {
         const data = this.props.navigation.getParam('data');
+        const dataFirstTime = this.props.navigation.getParam('dataFirstTime');
+        const dataLastTime = this.props.navigation.getParam('dataLastTime');
+        const process = this.props.navigation.getParam('process');
         this.setState({
-            dataCalendar: moment.unix(data).format('dddd, D MMMM [năm] YYYY'),
+            data: moment.unix(data).format('dddd, D MMMM [năm] YYYY'),
+            dataFirstTime: dataFirstTime,
+            dataLastTime: dataLastTime,
         });
+
     }
 
     render() {
@@ -32,10 +39,14 @@ export default class ServiceConfirmation extends Component {
                         THÔNG TIN CA LÀM
                     </Text>
                     <View style={styles.container}>
-                        <View >
-                            <Text style={styles.textView}>{this.state.dataCalendar}</Text>
-                            <Text style={styles.textView}>{this.state.dataCalendar}</Text>
-                            <Text style={styles.textView}>{this.state.dataCalendar}</Text>
+                        <View>
+                            <View style={styles.textView}>
+                                <Text style={{fontSize: 18}}>{this.state.data}</Text>
+                                <Text style={{
+                                    fontSize: 16,
+                                    color: '#565656',
+                                }}>{this.state.dataFirstTime} - {this.state.dataLastTime}</Text>
+                            </View>
                         </View>
                     </View>
                     <Text style={{marginTop: 20, marginBottom: 10, marginHorizontal: 20, fontSize: 16}}>
@@ -53,7 +64,7 @@ export default class ServiceConfirmation extends Component {
                         backgroundColor: 'green', alignItems: 'center', borderRadius: 15, marginBottom: 15,
                     }}
                                       onPress={() => {
-                                          this.props.navigation.navigate('ServiceConfirmation');
+                                          this.props.navigation.navigate('MoneyPay');
                                       }}>
                         <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}> TIẾP TỤC </Text>
                     </TouchableOpacity>
@@ -74,11 +85,11 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'gray',
     },
-    textView:{
-        fontSize:16,
-        padding:10,
+    textView: {
+        fontSize: 16,
+        padding: 10,
         borderBottomWidth: 2 / 3,
-        borderColor: 'gray'
+        borderColor: 'gray',
     },
     title: {
         height: windowWidth / 8,

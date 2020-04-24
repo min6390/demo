@@ -82,13 +82,14 @@ export default class Home extends React.Component {
                                 Dùng lẻ
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonViewLeft}>
+                        <TouchableOpacity style={styles.buttonViewLeft}
+                        onPress={()=>{this.props.navigation.navigate('Periodic')}}>
                             <View style={styles.imageViewButton}>
                                 <Image
                                     source={require('../../images/imagesHome/schedule.png')}/>
                             </View>
                             <Text>
-                                fwasfwafawfw
+                                Định kỳ
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonViewLeft}>

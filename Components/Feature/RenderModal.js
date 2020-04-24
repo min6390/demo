@@ -4,8 +4,8 @@ import {
     View,
     TextInput,
     TouchableOpacity,
-    Image, Modal, Dimensions,
-    StyleSheet, KeyboardAvoidingView, ScrollView,
+    Image, Modal,
+    StyleSheet,
 } from 'react-native';
 
 export default class RenderModal extends React.Component {
@@ -21,8 +21,8 @@ export default class RenderModal extends React.Component {
         this.setState({isModalVisible : true})
     }
     close(){
-        if(this.props.callback){
-            this.props.callback(this.state.address)
+        if(this.props.onPressModal){
+            this.props.onPressModal(this.state.address)
         }
     }
     render() {
