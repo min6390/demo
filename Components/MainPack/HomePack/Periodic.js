@@ -6,6 +6,8 @@ import {
 } from 'react-native';
 import ProgressBar from '../../Feature/ProgressBar';
 import RenderModal from '../../Feature/RenderModal';
+import RenderCalendarPeriodic from '../../Feature/RenderCalendarPeriodic';
+import RenderCalendar from '../../Feature/RenderCalendar';
 
 export default class Periodic extends Component {
     constructor(props) {
@@ -19,7 +21,9 @@ export default class Periodic extends Component {
     onPressModal = (address) => {
         this.setState({address});
     };
-
+    onDayPeriodicPress = (selectedTimestampPeriodic)=>{
+        this.selectedTimestampPeriodic = selectedTimestampPeriodic
+    };
 
     render() {
         return (
@@ -62,8 +66,13 @@ export default class Periodic extends Component {
                         </View>
                         <TouchableOpacity style={styles.buttonViewCalendar}
                                           onPress={() => {
+                                              if (this.renderCalendarPeriodic) {
+                                                  this.renderCalendarPeriodic.open();
+                                              }
                                           }}>
-                            <View></View>
+                            <View>
+                                <RenderCalendarPeriodic ref={ref => this.renderCalendarPeriodic = ref} onPressDay={this.onDayPeriodicPress()}/>
+                            </View>
                         </TouchableOpacity>
                     </View>
 

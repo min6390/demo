@@ -16,7 +16,7 @@ export default class SignIn extends React.Component {
         this.state = {
             email: '',
             password: '',
-            spinner: false,c
+            spinner: false,
         };
     }
 
