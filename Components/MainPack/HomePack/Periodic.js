@@ -8,6 +8,7 @@ import ProgressBar from '../../Feature/ProgressBar';
 import RenderModal from '../../Feature/RenderModal';
 import RenderCalendarPeriodic from '../../Feature/RenderCalendarPeriodic';
 import RenderCalendar from '../../Feature/RenderCalendar';
+import RenderWorkTime from '../../confirm/RenderWorkTime';
 
 export default class Periodic extends Component {
     constructor(props) {
@@ -23,6 +24,13 @@ export default class Periodic extends Component {
     };
     onDayPeriodicPress = (selectedTimestampPeriodic)=>{
         this.selectedTimestampPeriodic = selectedTimestampPeriodic
+    };
+
+    onPressWorkTime = (firstTime, leftPicker, lastTime, rightPicker) => {
+        this.firstTime = firstTime;
+        this.leftPicker = leftPicker;
+        this.lastTime = lastTime;
+        this.rightPicker = rightPicker;
     };
 
     render() {
@@ -64,16 +72,12 @@ export default class Periodic extends Component {
                                 source={require('../../../images/imageBooking/calendar.png')}/>
                             <Text style={styles.title}> LỊCH LÀM VIỆC HẰNG TUẦN</Text>
                         </View>
-                        <TouchableOpacity style={styles.buttonViewCalendar}
-                                          onPress={() => {
-                                              if (this.renderCalendarPeriodic) {
-                                                  this.renderCalendarPeriodic.open();
-                                              }
-                                          }}>
+                        <View style={styles.buttonViewCalendar}
+                                         >
                             <View>
                                 <RenderCalendarPeriodic ref={ref => this.renderCalendarPeriodic = ref} onPressDay={this.onDayPeriodicPress()}/>
                             </View>
-                        </TouchableOpacity>
+                        </View>
                     </View>
 
                     <View style={styles.container}>
@@ -82,19 +86,9 @@ export default class Periodic extends Component {
                         <Text style={styles.title}> THỜI GIAN LÀM VIỆC</Text>
                         <View style={styles.viewWordTime}>
                             <View style={{margin: 5}}>
+                                <RenderWorkTime onPressWorkTime={this.onPressWorkTime}/>
                             </View>
                         </View>
-                    </View>
-
-                    <View style={styles.container}>
-                        <Image
-                            source={require('../../../images/imageBooking/voucher.png')}/>
-                        <Text style={styles.title}> MÃ KHUYẾN MÃI </Text>
-                        <TouchableOpacity style={styles.buttonView}
-                                          onPress={() => {
-                                          }}>
-                            <Text></Text>
-                        </TouchableOpacity>
                     </View>
 
                     <View style={styles.container}>
