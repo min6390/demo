@@ -38,7 +38,7 @@ export default class Home extends React.Component {
                                     source={require('../../images/imagesHome/washing-machine.png')}/>
                             </View>
                             <Text>
-                                ACCleaning
+                                Vệ sinh điện lạnh
                             </Text>
                             <View style={{
                                 position: 'absolute', right: 15, top: 10, borderRadius: 5, borderColor: 'gray'
@@ -55,7 +55,7 @@ export default class Home extends React.Component {
                                     source={require('../../images/imagesHome/bug-spray.png')}/>
                             </View>
                             <Text>
-                                fwasfwafawfw
+                                Phun, khử khuẩn
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonViewLeft}
@@ -92,13 +92,14 @@ export default class Home extends React.Component {
                                 Định kỳ
                             </Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonViewLeft}>
+                        <TouchableOpacity style={styles.buttonViewLeft}
+                        onPress={()=>{this.props.navigation.navigate('Sofa')}}>
                             <View style={styles.imageViewButton}>
                                 <Image
                                     source={require('../../images/imagesHome/couch.png')}/>
                             </View>
                             <Text>
-                                fwasfw
+                                Vệ sinh sofa
                             </Text>
                         </TouchableOpacity>
                     </View>

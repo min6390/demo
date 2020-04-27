@@ -28,6 +28,7 @@ import Retail from '../MainPack/HomePack/Retail';
 import ServiceConfirmation from '../confirm/ServiceConfirmation';
 import MoneyPay from '../Feature/MoneyPay';
 import Periodic from '../MainPack/HomePack/Periodic';
+import Sofa from '../MainPack/HomePack/Sofa';
 
 
 const TabNavigator = createBottomTabNavigator({
@@ -114,7 +115,12 @@ const Navigator = createStackNavigator({
 
     ACCleaning: {
         screen: ACCleaning,
-        navigationOptions: {},
+        navigationOptions: {
+            title: 'Vệ sinh điện lạnh',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
+        },
     },
 
     Account: {
@@ -142,10 +148,30 @@ const Navigator = createStackNavigator({
     },
     TotalSanitation: {
         screen: TotalSanitation,
-        navigationOptions: {},
+        navigationOptions: {
+            title: 'Tổng vệ sinh',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
+        },
     },
     Retail: {
         screen: Retail,
+        navigationOptions:{
+            title: 'Dùng lẻ',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
+        }
+    },
+    Sofa: {
+        screen: Sofa,
+        navigationOptions: {
+            title: 'Vệ sinh Sofa',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
+        },
     },
     MoneyPay: {
         screen: MoneyPay,

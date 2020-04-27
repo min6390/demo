@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import moment from 'moment';
 import {Calendar} from 'react-native-calendars';
+import RenderCalendar from '../../Feature/RenderCalendar';
 
 const widthScreen = Dimensions.get('window').width;
 
@@ -25,6 +26,10 @@ export default class TotalSanitation extends React.Component {
             dateSelected: '',
         };
     }
+
+    onPressDay = (selectedTimestamp) => {
+        this.selectedTimestamp = selectedTimestamp;
+    };
 
     renderModal() {
         return (
@@ -81,27 +86,27 @@ export default class TotalSanitation extends React.Component {
     }
 
 
-    renderCalendar() {
-        const today = moment(this.state.day).format('dddd, DD-MM-YYYY');
-        const {viewCalendar} = this.state;
-        return (viewCalendar ?
-                <View style={{marginHorizontal: 5, height: 50, justifyContent: 'center'}}>
-                    <Text style={{fontSize: 16}}> {today} </Text>
-                </View>
-                : <View>
-                    <Calendar style={{backgroundColor: '#e6e6e6'}}
-                              current={this.state.day}
-                              firstDay={1}
-                              minDate={time}
-                              maxDate={timeMax}
-                              onDayPress={(day) => {
-                                  this.setState({viewCalendar: true, day});
-                              }}
-                              theme={{calendarBackground: '#e6e6e6'}}
-                    />
-                </View>
-        );
-    }
+    // renderCalendar() {
+    //     const today = moment(this.state.day).format('dddd, DD-MM-YYYY');
+    //     const {viewCalendar} = this.state;
+    //     return (viewCalendar ?
+    //             <View style={{marginHorizontal: 5, height: 50, justifyContent: 'center'}}>
+    //                 <Text style={{fontSize: 16}}> {today} </Text>
+    //             </View>
+    //             : <View>
+    //                 <Calendar style={{backgroundColor: '#e6e6e6'}}
+    //                           current={this.state.day}
+    //                           firstDay={1}
+    //                           minDate={time}
+    //                           maxDate={timeMax}
+    //                           onDayPress={(day) => {
+    //                               this.setState({viewCalendar: true, day});
+    //                           }}
+    //                           theme={{calendarBackground: '#e6e6e6'}}
+    //                 />
+    //             </View>
+    //     );
+    // }
 
     render() {
         return (
@@ -138,12 +143,14 @@ export default class TotalSanitation extends React.Component {
                                 source={require('../../../images/imageBooking/calendar.png')}/>
                             <Text style={styles.title}> LỊCH LÀM VIỆC </Text>
                         </View>
-                        <View style={styles.buttonViewCalendar}
+                        <TouchableOpacity style={styles.buttonViewCalendar}
                                           onPress={() => {
-                                              this.setState({viewCalendar: false});
+                                              if(this.renderCalendar){
+                                                  this.renderCalendar.open()
+                                              }
                                           }}>
-                            <View>{this.renderCalendar()}</View>
-                        </View>
+                            <View><RenderCalendar ref={ref=>this.renderCalendar=ref} onPressDay={this.onPressDay}/></View>
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.container}>
                         <Image

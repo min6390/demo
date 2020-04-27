@@ -27,7 +27,7 @@ export default class RenderCalendar extends React.Component {
     }
 
     render() {
-        let today = moment.unix(this.state.selectedTimestamp).format('dddd, D MMMM [năm] YYYY');
+        let today = moment.unix(this.state.selectedTimestamp || moment.unix()).format('dddd, D MMMM [năm] YYYY');
         let {viewCalendar} = this.state;
         return (viewCalendar ?
                 <View style={{marginHorizontal: 5, height: 50, justifyContent: 'center'}}>
@@ -35,7 +35,6 @@ export default class RenderCalendar extends React.Component {
                 </View>
                 : <View>
                     <Calendar style={{backgroundColor: '#e6e6e6'}}
-                              current={this.state.day}
                               firstDay={1}
                               minDate={time}
                               maxDate={timeMax}
@@ -50,7 +49,6 @@ export default class RenderCalendar extends React.Component {
                               }}
                               theme={{calendarBackground: '#e6e6e6'}}
                     />
-
                 </View>
         );
     }
