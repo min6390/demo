@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {
     StyleSheet,
     Text,
-    View, TouchableOpacity, Image, Dimensions,
+    View, TouchableOpacity,  Dimensions,
 } from 'react-native';
-import ProgressBar from '../Feature/ProgressBar';
+import ProgressBar from './ProgressBar';
 import moment from 'moment';
 
 export default class ServiceConfirmation extends Component {
@@ -21,7 +21,6 @@ export default class ServiceConfirmation extends Component {
         const data = this.props.navigation.getParam('data');
         const dataFirstTime = this.props.navigation.getParam('dataFirstTime');
         const dataLastTime = this.props.navigation.getParam('dataLastTime');
-        const process = this.props.navigation.getParam('process');
         this.setState({
             data: moment.unix(data).format('dddd, D MMMM [năm] YYYY'),
             dataFirstTime: dataFirstTime,

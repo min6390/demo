@@ -2,10 +2,8 @@ import React from 'react';
 import {
     StyleSheet,
     View,
-    Text, Alert,
-    Image, TouchableOpacity,
+    Image,
 } from 'react-native';
-import * as firebase from 'react-native-firebase';
 
 export default ({process}) => {
     return (

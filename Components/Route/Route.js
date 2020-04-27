@@ -1,11 +1,6 @@
 import React from 'react';
 import {
-    SafeAreaView,
-    StyleSheet,
-    ScrollView,
-    View,
-    Text,
-    StatusBar, Image,
+    StyleSheet, Image,
 } from 'react-native';
 
 import {createAppContainer} from 'react-navigation';
@@ -29,6 +24,7 @@ import ServiceConfirmation from '../confirm/ServiceConfirmation';
 import MoneyPay from '../Feature/MoneyPay';
 import Periodic from '../MainPack/HomePack/Periodic';
 import Sofa from '../MainPack/HomePack/Sofa';
+import PriceListSofaService from '../confirm/PriceListSofaService';
 
 
 const TabNavigator = createBottomTabNavigator({
@@ -180,6 +176,15 @@ const Navigator = createStackNavigator({
         screen: Periodic,
         navigationOptions: {
             title: 'Định kỳ',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+            },
+        },
+    },
+    PriceListSofaService: {
+        screen: PriceListSofaService,
+        navigationOptions: {
+            title: 'Bảng giá dịch vụ',
             headerTitleStyle: {
                 fontWeight: 'bold',
             },

@@ -2,14 +2,14 @@ import React from 'react';
 import {
     StyleSheet,
     View,
-    Text, Alert,
+    Text,
     Image, TouchableOpacity, ScrollView, TextInput, Dimensions,
 } from 'react-native';
-import ProgressBar from '../../Feature/ProgressBar';
+import ProgressBar from '../../confirm/ProgressBar';
 import RenderModal from '../../Feature/RenderModal';
 import RenderCalendar from '../../Feature/RenderCalendar';
 import RenderWorkTime from '../../confirm/RenderWorkTime';
-import MoneyPay from '../../Feature/MoneyPay';
+
 
 export default class Retail extends React.Component {
     constructor() {
@@ -106,7 +106,6 @@ export default class Retail extends React.Component {
                         <TouchableOpacity style={styles.buttonView}
                                           onPress={() => {
                                           }}>
-                            <Text></Text>
                         </TouchableOpacity>
                     </View>
 

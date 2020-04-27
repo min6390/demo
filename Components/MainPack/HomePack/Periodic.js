@@ -4,10 +4,9 @@ import {
     Image,
     Dimensions, Text, StyleSheet, TouchableOpacity, ScrollView, TextInput,
 } from 'react-native';
-import ProgressBar from '../../Feature/ProgressBar';
+import ProgressBar from '../../confirm/ProgressBar';
 import RenderModal from '../../Feature/RenderModal';
 import RenderCalendarPeriodic from '../../Feature/RenderCalendarPeriodic';
-import RenderCalendar from '../../Feature/RenderCalendar';
 import RenderWorkTime from '../../confirm/RenderWorkTime';
 
 export default class Periodic extends Component {

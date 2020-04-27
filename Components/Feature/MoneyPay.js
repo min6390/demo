@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import {
     View,
-    Image,
     Dimensions, FlatList, Text, StyleSheet, TouchableOpacity,
 } from 'react-native';
 
-import ProgressBar from './ProgressBar';
+import ProgressBar from '../confirm/ProgressBar';
 
 const DATA = [
     {

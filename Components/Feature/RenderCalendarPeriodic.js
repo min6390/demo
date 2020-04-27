@@ -126,7 +126,7 @@ export default class RenderCalendarPeriodic extends React.Component {
                     {
                         dayOfWeek.map((day, index) => {
                             const {week} = this.state;
-                            const backgroundColor = week.indexOf(day) > -1 ? 'green' : '#e6e6e6';
+                            const backgroundColor = week.indexOf(day) > -1 ? '#34ab11' : '#e6e6e6';
                             const textColor = week.indexOf(day) > -1 ? 'white' : 'black';
                             return (
                                 <TouchableOpacity key={index}

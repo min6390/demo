@@ -2,7 +2,6 @@ import React from 'react';
 import {
     Text, View, TouchableOpacity, StyleSheet, Image, Dimensions, ScrollView, TextInput,
 } from 'react-native';
-import RenderWorkTime from '../../confirm/RenderWorkTime';
 import RenderModal from '../../Feature/RenderModal';
 import RenderCalendar from '../../Feature/RenderCalendar';
 
@@ -46,7 +45,6 @@ export default class Sofa extends React.Component {
                         <Text style={styles.title}> SỐ NHÀ/CĂN HỘ </Text>
                         <TouchableOpacity style={styles.buttonView}
                                           onPress={() => {
-                                              // this.setState({isModalVisible:true})
                                               if (this.renderModal) {
                                                   this.renderModal.open();
                                               }
@@ -76,9 +74,7 @@ export default class Sofa extends React.Component {
                             source={require('../../../images/imageBooking/bank.png')}/>
                         <Text style={styles.title}> GIÁ THAM KHẢO </Text>
                         <TouchableOpacity style={styles.buttonView}
-                                          onPress={() => {
-                                          }
-                                          }>
+                                          onPress={() => {this.props.navigation.navigate('PriceListSofaService')}}>
                             <Text>Xem bảng giá</Text>
                         </TouchableOpacity>
                     </View>
@@ -98,7 +94,7 @@ export default class Sofa extends React.Component {
                                           onPress={() => {
 
                                           }}>
-                            <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}> TIẾP TỤC </Text>
+                            <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}> ĐĂNG KÍ </Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -115,6 +111,7 @@ const styles = StyleSheet.create({
         margin: 5,
         marginHorizontal: 5,
         alignItems: 'center',
+
     },
     title: {
         width: '75%',
