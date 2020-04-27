@@ -4,10 +4,6 @@ import {
 } from 'react-native';
 
 export default class PriceListSofaService extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <View>
