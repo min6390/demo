@@ -3,7 +3,7 @@ import {
     Text,
     View,
 } from 'react-native';
-import MapView, from 'react-native-maps';
+import MapView from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import {check, request, openSettings, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
