@@ -25,6 +25,7 @@ import MoneyPay from '../Feature/MoneyPay';
 import Periodic from '../MainPack/HomePack/Periodic';
 import Sofa from '../MainPack/HomePack/Sofa';
 import PriceListSofaService from '../confirm/PriceListSofaService';
+import Disinfection from '../MainPack/HomePack/Disinfection';
 
 
 const TabNavigator = createBottomTabNavigator({
@@ -136,6 +137,10 @@ const Navigator = createStackNavigator({
     },
     MapPicker: {
         screen: MapPicker,
+        navigationOptions: {},
+    },
+    Disinfection: {
+        screen: Disinfection,
         navigationOptions: {},
     },
     Finish: {

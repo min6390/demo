@@ -92,7 +92,7 @@ export default class Sofa extends React.Component {
                     <View style={{alignItems: 'center', justifyContent: 'center'}}>
                         <TouchableOpacity style={styles.btnContinue}
                                           onPress={() => {
-
+                                              this.props.navigation.navigate('Finish');
                                           }}>
                             <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}> ĐĂNG KÍ </Text>
                         </TouchableOpacity>

@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-    SafeAreaView,
     StyleSheet,
-    ScrollView,
     View,
     Text,
-    StatusBar, TextInput, Image, KeyboardAvoidingView, TouchableOpacity, Alert,
+    TextInput, Image, KeyboardAvoidingView, TouchableOpacity, Alert,
 } from 'react-native';
 import * as firebase from 'react-native-firebase';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -45,6 +43,7 @@ export default class SignUp extends React.Component {
 
         }
     };
+
 
     render() {
         return (

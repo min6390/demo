@@ -20,6 +20,7 @@ export default class Retail extends React.Component {
             isCalendarVisible: false,
             isModalVisiblePicker: false,
             number: 0,
+            notify:''
 
         };
     };
@@ -115,7 +116,10 @@ export default class Retail extends React.Component {
                             source={require('../../../images/imageBooking/writing.png')}/>
                         <Text style={styles.title}> GHI CHÚ </Text>
                         <TextInput style={styles.inputView}
-                                   placeholder={'Nhập vào cái gì đó'}/>
+                                   placeholder={'Nhập vào cái gì đó'}
+                                   onChangeText={(notify) => this.setState({notify})}
+                                   value = {this.state.notify}
+                       />
                     </View>
                 </ScrollView>
 
@@ -133,6 +137,7 @@ export default class Retail extends React.Component {
                                                       data: this.selectedTimestamp,
                                                       dataFirstTime: this.firstTime[this.leftPicker],
                                                       dataLastTime: this.lastTime[this.rightPicker],
+                                                      notify : this.state.notify
                                                   });
                                           }}>
                             <Text style={{fontSize: 18, fontWeight: 'bold', color: 'white'}}> TIẾP TỤC </Text>

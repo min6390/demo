@@ -1,12 +1,10 @@
 import React from 'react';
 import {
     Dimensions,
-    SafeAreaView,
     StyleSheet,
     ScrollView,
     View,
-    Text,
-    StatusBar, Image, TouchableOpacity,
+    Text, Image, TouchableOpacity,
 } from 'react-native';
 
 const widthScreen = Dimensions.get('window').width;
@@ -49,7 +47,8 @@ export default class Home extends React.Component {
                                 </Text>
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonViewLeft}>
+                        <TouchableOpacity style={styles.buttonViewLeft}
+                                          onPress={()=>{this.props.navigation.navigate('Disinfection')}}>
                             <View style={styles.imageViewButton}>
                                 <Image
                                     source={require('../../images/imagesHome/bug-spray.png')}/>

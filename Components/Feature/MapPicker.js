@@ -3,7 +3,7 @@ import {
     Text,
     View,
 } from 'react-native';
-import MapView, {AnimatedRegion, Marker} from 'react-native-maps';
+import MapView, from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 import {check, request, openSettings, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
@@ -86,7 +86,7 @@ export default class MapPicker extends Component {
                     region={this.state.region}
                     showsUserLocation={true}
                     onMapReady={() => this.setState({bottomMargin: 0})}
-                    onRegionChangeComplete={(RegionChange) => {
+                    onRegionChangeComplete={() => {
                         this.setState({
                             RegionChange: {
                                 latitude: 10.793049,
@@ -96,7 +96,7 @@ export default class MapPicker extends Component {
                     }}>
                 </MapView>
                 <Text>
-                    {this.state.latitude } - {this.state.longitude}
+                    {this.state.latitude} - {this.state.longitude}
                 </Text>
             </View>
         );

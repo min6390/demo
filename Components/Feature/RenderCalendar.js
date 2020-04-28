@@ -27,7 +27,7 @@ export default class RenderCalendar extends React.Component {
     }
 
     render() {
-        let today = moment.unix(this.state.selectedTimestamp || moment.unix()).format('dddd, D MMMM [năm] YYYY');
+        let today = moment.unix(this.state.selectedTimestamp || moment().unix()).format('dddd, D MMMM [năm] YYYY');
         let {viewCalendar} = this.state;
         return (viewCalendar ?
                 <View style={{marginHorizontal: 5, height: 50, justifyContent: 'center'}}>

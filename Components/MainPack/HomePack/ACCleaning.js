@@ -7,12 +7,12 @@ import {
     Image, Modal, Dimensions,
     StyleSheet, KeyboardAvoidingView, ScrollView,
 } from 'react-native';
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {Calendar, } from 'react-native-calendars';
 import moment from 'moment';
 
 
 import {LocaleConfig} from 'react-native-calendars';
-import {calendarBackground} from 'react-native-calendars/src/style';
+
 
 LocaleConfig.locales['vi'] = {
     monthNames: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
@@ -89,8 +89,7 @@ export default class ACCleaning extends React.Component {
 
     renderCalendar() {
         //  const today = moment(this.state.timestamp).format('ddd - DD/MM/YYYY');
-        let today = moment.unix(this.state.selectedTimestamp).format('dddd, D MMMM [năm] YYYY');
-        console.log('CCC', today);
+        let today = moment.unix(this.state.selectedTimestamp || moment().unix()).format('dddd, D MMMM [năm] YYYY');
         const {viewCalendar} = this.state;
         return (viewCalendar ?
                 <View style={{marginHorizontal: 5, height: 50, justifyContent: 'center'}}>
@@ -195,7 +194,6 @@ const time = moment().format();
 const timeMax = moment().add(14, 'days').calendar();
 
 const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     container: {
         flexWrap: 'wrap',

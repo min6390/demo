@@ -14,6 +14,7 @@ export default class ServiceConfirmation extends Component {
             data: '',
             dataFirstTime: '',
             dataLastTime: '',
+            notify:'',
         };
     };
 
@@ -21,10 +22,12 @@ export default class ServiceConfirmation extends Component {
         const data = this.props.navigation.getParam('data');
         const dataFirstTime = this.props.navigation.getParam('dataFirstTime');
         const dataLastTime = this.props.navigation.getParam('dataLastTime');
+        const notify = this.props.navigation.getParam('notify');
         this.setState({
             data: moment.unix(data).format('dddd, D MMMM [năm] YYYY'),
             dataFirstTime: dataFirstTime,
             dataLastTime: dataLastTime,
+            notify :notify,
         });
 
     }
@@ -46,6 +49,7 @@ export default class ServiceConfirmation extends Component {
                                     color: '#565656',
                                 }}>{this.state.dataFirstTime} - {this.state.dataLastTime}</Text>
                             </View>
+                            <Text style={{fontSize: 15,margin :5}}>Ghi chú : {this.state.notify}</Text>
                         </View>
                     </View>
                     <Text style={{marginTop: 20, marginBottom: 10, marginHorizontal: 20, fontSize: 16}}>

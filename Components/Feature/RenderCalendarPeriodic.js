@@ -133,10 +133,9 @@ export default class RenderCalendarPeriodic extends React.Component {
                                                   style={[styles.button, {backgroundColor: backgroundColor}]}
                                                   onPress={this.onPress(day)}>
                                     <Text style={{
-                                        fontSize: 18,
-                                        color: textColor,
-                                        textStyle: 'bold',
-                                    }}>{dayOfWeek1[day]}</Text>
+                                        fontSize: 18, color: textColor, textStyle: 'bold',
+                                    }}>
+                                        {dayOfWeek1[day]}</Text>
                                 </TouchableOpacity>
                             );
                         })

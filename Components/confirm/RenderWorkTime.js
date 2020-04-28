@@ -177,7 +177,6 @@ export default class RenderWorkTime extends Component {
                             <TouchableOpacity style={styles.btnFinish}
                                               onPress={() => {
                                                   this.setState({isModalVisiblePicker: false}, this.onPressWorkTime);
-
                                               }}>
                                 <Text style={{fontSize: 18, color: 'white', fontWeight: 'bold'}}>Xác nhận</Text>
                             </TouchableOpacity>
