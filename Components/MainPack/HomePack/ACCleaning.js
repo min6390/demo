@@ -21,7 +21,6 @@ LocaleConfig.locales['vi'] = {
     dayNamesShort: ['CN.', 'Th2.', 'Th3', 'Th4', 'Th5', 'Th6', 'Th7'],
     today: 'Aujourd\'hui',
 };
-LocaleConfig.defaultLocale = 'fr';
 export default class ACCleaning extends React.Component {
     constructor(props) {
         super(props);

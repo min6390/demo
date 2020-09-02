@@ -26,6 +26,7 @@ import Periodic from '../MainPack/HomePack/Periodic';
 import Sofa from '../MainPack/HomePack/Sofa';
 import PriceListSofaService from '../confirm/PriceListSofaService';
 import Disinfection from '../MainPack/HomePack/Disinfection';
+import darkMode from '../confirm/DarkMode';
 
 
 const TabNavigator = createBottomTabNavigator({
@@ -173,6 +174,10 @@ const Navigator = createStackNavigator({
                 fontWeight: 'bold',
             },
         },
+    },
+    DarkMode: {
+        screen: darkMode,
+
     },
     MoneyPay: {
         screen: MoneyPay,

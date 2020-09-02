@@ -201,6 +201,8 @@ android {
 
 dependencies {
 
+    implementation 'com.google.firebase:firebase-database-ktx:19.3.0'
+
     implementation 'com.onesignal:OneSignal:[3.11.2, 3.99.99]'
 
     implementation "com.google.firebase:firebase-auth:19.2.0"

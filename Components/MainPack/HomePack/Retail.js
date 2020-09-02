@@ -3,12 +3,14 @@ import {
     StyleSheet,
     View,
     Text,
-    Image, TouchableOpacity, ScrollView, TextInput, Dimensions,
+    Image, TouchableOpacity, ScrollView, TextInput, Dimensions, Switch, isEnabled,
 } from 'react-native';
 import ProgressBar from '../../confirm/ProgressBar';
 import RenderModal from '../../Feature/RenderModal';
 import RenderCalendar from '../../Feature/RenderCalendar';
 import RenderWorkTime from '../../confirm/RenderWorkTime';
+import {stylesTest} from '../../confirm/theme';
+import DarkMode, {styleDarkMode} from '../../confirm/DarkMode';
 
 
 export default class Retail extends React.Component {
@@ -20,7 +22,8 @@ export default class Retail extends React.Component {
             isCalendarVisible: false,
             isModalVisiblePicker: false,
             number: 0,
-            notify:''
+            notify:'',
+
 
         };
     };
@@ -40,12 +43,13 @@ export default class Retail extends React.Component {
         this.rightPicker = rightPicker;
     };
 
+
     render() {
         return (
             <View style={{flex: 1, flexDirection: 'column', justifyContent: 'space-between'}}>
-                <ScrollView>
+                <ScrollView style={styleDarkMode.scrollView}>
                     <ProgressBar process={0}/>
-
+                    <DarkMode/>
                     <View style={styles.container}>
                         <Image
                             source={require('../../../images/imageBooking/placeholder.png')}/>
